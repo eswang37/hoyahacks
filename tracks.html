@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracks — HoyaHacks 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.track-card {
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 16px;
+  padding: 2rem 1.8rem;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.track-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--track-color, var(--pink-hot));
+}
+
+.track-card:hover {
+  border-color: var(--track-color, var(--pink-hot));
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(232,38,122,0.1);
+}
+
+.track-emoji { font-size: 2.2rem; margin-bottom: 0.8rem; display: block; }
+
+.track-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.track-prize {
+  display: inline-block;
+  background: var(--pink-pale);
+  color: var(--pink-hot);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-bottom: 0.9rem;
+}
+
+.track-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.track-examples {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.track-examples li {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.track-examples li::before {
+  content: '→';
+  color: var(--pink-hot);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.grand-prize-banner {
+  background: linear-gradient(135deg, var(--pink-pale) 0%, #fff8fc 100%);
+  border: 2px solid var(--pink-light);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.grand-prize-banner h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.prize-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.prize-pill {
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 12px;
+  padding: 1.2rem 2rem;
+  text-align: center;
+  min-width: 140px;
+}
+
+.prize-pill-place {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.prize-pill-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--pink-hot);
+  line-height: 1;
+}
+
+.prize-pill.first { border-color: #D4A017; }
+.prize-pill.first .prize-pill-amount { color: #B8891A; }
+.prize-pill.first .prize-pill-place { color: #B8891A; }
+
+.judging-section {
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-top: 3rem;
+}
+
+.judging-section h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.2rem;
+}
+
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.criteria-item {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.criteria-pct {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--pink-hot);
+  line-height: 1;
+}
+
+.criteria-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="mascot" class="nav-mascot">
+    HoyaHacks
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="tracks.html" class="active">Tracks</a></li>
+    <li><a href="organizers.html">Team</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <a href="index.html#register" class="btn-primary nav-cta">Register</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">HoyaHacks 2027</div>
+  <h1>Hack <span>Tracks</span></h1>
+  <p>Choose a track that matches your passion. Build something that matters. Prize money up for grabs in every category.</p>
+</div>
+
+<section class="page-section" style="padding-top: 1rem;">
+  <!-- Grand Prize Banner -->
+  <div class="grand-prize-banner">
+    <div class="section-label" style="justify-content: center;">Overall Winners</div>
+    <h2>Grand Prize Pool</h2>
+    <p style="color: var(--text-muted); font-size: 0.95rem;">Awarded to the best overall hacks across all tracks</p>
+    <div class="prize-row">
+      <div class="prize-pill first">
+        <div class="prize-pill-place">🥇 1st Place</div>
+        <div class="prize-pill-amount">$5,000</div>
+      </div>
+      <div class="prize-pill">
+        <div class="prize-pill-place">🥈 2nd Place</div>
+        <div class="prize-pill-amount" style="color: #888;">$2,500</div>
+      </div>
+      <div class="prize-pill">
+        <div class="prize-pill-place">🥉 3rd Place</div>
+        <div class="prize-pill-amount" style="color: #A07060;">$1,000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Track Cards -->
+  <div class="section-label">Challenge Tracks</div>
+  <h2 class="section-title">Find Your Focus</h2>
+  <p style="color: var(--text-muted); max-width: 600px;">Each track has its own prize. You can enter one track — pick the one that best fits your project.</p>
+
+  <div class="tracks-grid">
+
+    <div class="track-card" style="--track-color: #E8267A;">
+      <span class="track-emoji">🤖</span>
+      <div class="track-name">AI / Machine Learning</div>
+      <div class="track-prize">$1,500 Prize</div>
+      <p class="track-desc">Build something that thinks. Whether it's NLP, computer vision, generative AI, or predictive models — show us what AI can do in 36 hours.</p>
+      <ul class="track-examples">
+        <li>AI-powered accessibility tools</li>
+        <li>Generative content or creative apps</li>
+        <li>Predictive analytics or personalization</li>
+        <li>LLM-powered workflows</li>
+      </ul>
+    </div>
+
+    <div class="track-card" style="--track-color: #C41E6A;">
+      <span class="track-emoji">🌍</span>
+      <div class="track-name">Social Impact</div>
+      <div class="track-prize">$1,500 Prize</div>
+      <p class="track-desc">Technology with purpose. Build a project that addresses a real social, environmental, or civic challenge — something that makes the world a little better.</p>
+      <ul class="track-examples">
+        <li>Mental health and wellness apps</li>
+        <li>Sustainability & climate tech</li>
+        <li>Civic engagement platforms</li>
+        <li>Education access tools</li>
+      </ul>
+    </div>
+
+    <div class="track-card" style="--track-color: #FF4DA6;">
+      <span class="track-emoji">🌱</span>
+      <div class="track-name">Best Beginner Hack</div>
+      <div class="track-prize">$1,000 Prize</div>
+      <p class="track-desc">First hackathon? This one's for you. All beginner teams are eligible. We judge on creativity, effort, and learning — not complexity.</p>
+      <ul class="track-examples">
+        <li>Any project by a first-time hacker</li>
+        <li>Simple apps with a clear use case</li>
+        <li>Creative use of a new tool or API</li>
+        <li>Learning projects with real polish</li>
+      </ul>
+    </div>
+
+    <div class="track-card" style="--track-color: #7A0F3D;">
+      <span class="track-emoji">🎨</span>
+      <div class="track-name">Best Design</div>
+      <div class="track-prize">$1,000 Prize</div>
+      <p class="track-desc">For the hackers who think pixel-perfect matters. Build something that's not just functional but genuinely beautiful, intuitive, and delightful to use.</p>
+      <ul class="track-examples">
+        <li>UI/UX-first web or mobile apps</li>
+        <li>Creative interactive experiences</li>
+        <li>Data visualizations and dashboards</li>
+        <li>Accessible, inclusive design</li>
+      </ul>
+    </div>
+
+    <div class="track-card" style="--track-color: #E8267A; grid-column: span 1;">
+      <span class="track-emoji">🏢</span>
+      <div class="track-name">Sponsor Challenges</div>
+      <div class="track-prize">$2,000+ in Prizes</div>
+      <p class="track-desc">Our sponsors will announce their own mini-challenges during the opening ceremony, each with their own prizes. Stay tuned for details on the night!</p>
+      <ul class="track-examples">
+        <li>Sponsor-specific APIs and tools</li>
+        <li>Industry problem statements</li>
+        <li>Announced at opening ceremony</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Judging Criteria -->
+  <div class="judging-section">
+    <h3>How We Judge</h3>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">All projects are evaluated by a panel of industry mentors and sponsors on four criteria:</p>
+    <div class="criteria-grid">
+      <div class="criteria-item">
+        <div class="criteria-pct">30%</div>
+        <div class="criteria-name">Innovation</div>
+      </div>
+      <div class="criteria-item">
+        <div class="criteria-pct">25%</div>
+        <div class="criteria-name">Technical Depth</div>
+      </div>
+      <div class="criteria-item">
+        <div class="criteria-pct">25%</div>
+        <div class="criteria-name">Impact & Usefulness</div>
+      </div>
+      <div class="criteria-item">
+        <div class="criteria-pct">20%</div>
+        <div class="criteria-name">Presentation</div>
+      </div>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.2rem;">All submissions must be on <a href="https://hoya-hacks-2027.devpost.com/" target="_blank" style="color: var(--pink-hot);">Devpost</a> before 11:30 AM on Sunday Jan 24.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="Jack mascot" style="width:48px; opacity:0.7;">
+      <span>HoyaHacks 2027</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/hoyahacks/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/company/hoya-hacks" target="_blank">LinkedIn</a>
+      <a href="https://hoya-hacks-2027.devpost.com/" target="_blank">Devpost</a>
+      <a href="http://hackp.ac/coc" target="_blank">MLH Code of Conduct</a>
+    </div>
+    <div class="footer-contact"><a href="mailto:hoyahaxa@georgetown.edu">hoyahaxa@georgetown.edu</a></div>
+    <div class="footer-copy">© 2027 HoyaHacks · Georgetown University</div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

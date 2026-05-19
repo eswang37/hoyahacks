@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet the Team — HoyaHacks 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+
+<style>
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.team-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-pale) 0%, var(--pink-light) 100%);
+  border: 0px solid var(--pink-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--pink-hot);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.team-blurb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 230px;
+}
+
+@media (max-width: 600px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="mascot" class="nav-mascot">
+    HoyaHacks
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="tracks.html">Tracks</a></li>
+    <li><a href="organizers.html" class="active">Team</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <a href="index.html#register" class="btn-primary nav-cta">Register</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">The People Behind It</div>
+  <h1>Meet the <span>Team</span></h1>
+  <p>HoyaHacks is run entirely by Georgetown students who give up their sleep so you can build something amazing. Say hi if you see us!</p>
+</div>
+
+<section class="page-section" style="padding-top: 1rem;">
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar"><img src="menal-headshot.png" alt="Menal Qureshi"></div>
+      <div class="team-name">Menal Qureshi</div>
+      <p class="team-blurb">Menal is a junior in the college, majoring in Computer Science and Mathematics. She is from Northern Virginia and loves spending time with her friends and family, reading, and exploring new places!</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="zarin-headshot.png" alt="Zarin Rizvi"></div>
+      <div class="team-name">Zarin Rizvi</div>
+      <p class="team-blurb">Zarin is a junior in the college, majoring in computer science and economics. She is from Connecticut and loves to spend her free time writing and cooking. </p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="emily-headshot.png" alt="Emily Wang"></div>
+      <div class="team-name">Emily Wang</div>
+      <p class="team-blurb">Emily is a Sophomore in the College, majoring in Computer Science and minoring in art. She is from Southern California and loves playing soccer, drawing, and spending time with her friends and family.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="vivian-headshot.png" alt="Vivian Wen"></div>
+      <div class="team-name">Vivian Wen</div>
+      <p class="team-blurb">Vivian is a sophomore in the College studying Mathematics. She is from the island of Guam and enjoys drawing, listening to music, and watching YouTube in her free time.
+</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="angela-headshot.png" alt="Angela Sidhu"></div>
+      <div class="team-name">Angela Sidhu</div>
+      <p class="team-blurb">Angela is a senior Computer Science major with a concentration in Tech, Ethics, and Society, and a minor in Business. She is from Northern Virginia and loves staying active, fashion, and spending time with family and friends!</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="kieran-headshot.png" alt="Kieran Keiller"></div>
+      <div class="team-name">Kieran Keiller</div>
+      <p class="team-blurb">Kieran is a sophomore in the college, majoring in Physics with a minor in Computer science. He is from Maryland and enjoys going to the gym and spending time with his friends and dogs.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="Jack mascot" style="width:48px; opacity:0.7;">
+      <span>HoyaHacks 2027</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/hoyahacks/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/company/hoya-hacks" target="_blank">LinkedIn</a>
+      <a href="https://hoya-hacks-2027.devpost.com/" target="_blank">Devpost</a>
+      <a href="http://hackp.ac/coc" target="_blank">MLH Code of Conduct</a>
+    </div>
+    <div class="footer-contact"><a href="mailto:hoyahaxa@georgetown.edu">hoyahaxa@georgetown.edu</a></div>
+    <div class="footer-copy">© 2027 HoyaHacks · Georgetown University</div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

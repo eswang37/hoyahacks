@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — HoyaHacks 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.faq-wrap {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.faq-category {
+  margin-bottom: 3rem;
+}
+
+.faq-category-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--pink-pale);
+}
+
+.faq-item {
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 12px;
+  margin-bottom: 0.6rem;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.faq-item.open { border-color: var(--pink-hot); }
+
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.2rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: color 0.2s;
+}
+
+.faq-q:hover { color: var(--pink-hot); }
+.faq-item.open .faq-q { color: var(--pink-hot); }
+
+.faq-arrow {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--pink-hot);
+  transition: transform 0.25s, background 0.2s, border-color 0.2s;
+}
+
+.faq-item.open .faq-arrow {
+  transform: rotate(45deg);
+  background: var(--pink-pale);
+  border-color: var(--pink-light);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s;
+  padding: 0 1.5rem;
+}
+
+.faq-a-inner {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  padding-bottom: 1.2rem;
+}
+
+.faq-a-inner a {
+  color: var(--pink-hot);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.faq-a-inner a:hover { text-decoration: underline; }
+
+.faq-a-inner ul {
+  margin: 0.5rem 0 0.5rem 1.2rem;
+}
+
+.faq-a-inner ul li { margin-bottom: 0.2rem; }
+
+.faq-item.open .faq-a { max-height: 600px; }
+
+.still-questions {
+  background: linear-gradient(135deg, var(--pink-pale), #fff8fc);
+  border: 1.5px solid var(--pink-light);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.still-questions h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.still-questions p {
+  color: var(--text-muted);
+  margin-bottom: 1.3rem;
+  font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="mascot" class="nav-mascot">
+    HoyaHacks
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="tracks.html">Tracks</a></li>
+    <li><a href="organizers.html">Team</a></li>
+    <li><a href="faq.html" class="active">FAQ</a></li>
+  </ul>
+  <a href="index.html#register" class="btn-primary nav-cta">Register</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Got Questions?</div>
+  <h1>Frequently <span>Asked</span></h1>
+  <p>Everything you need to know before, during, and after HoyaHacks 2027. If something's missing, just email us.</p>
+</div>
+
+<div class="faq-wrap">
+
+  <!-- Registration -->
+  <div class="faq-category">
+    <div class="faq-category-title">Registration & Eligibility</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Who can participate in HoyaHacks?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">HoyaHacks is open to all college and university students, as well as high school students. You don't need to be a Georgetown student — we welcome hackers from any school. Beginners and first-timers are especially encouraged to apply!</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">How do I register?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        Register through one of the two forms on our <a href="index.html#register">registration page</a>:
+        <ul>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeNXc4PDaqqSCyUtw2IgmQHfqJkP1dzmEIS2IK9UFl7gqd8GQ/viewform" target="_blank">College participant form</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfllguxNM3P-kQ0oTwqUsLUhwHa4JsBpQFclFmaBj_dWIoA5Q/viewform" target="_blank">High school participant form</a></li>
+        </ul>
+        You'll also need to submit your final project on <a href="https://hoya-hacks-2027.devpost.com/" target="_blank">Devpost</a> by the deadline.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Is there a registration fee?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Nope! HoyaHacks is completely free to attend. Meals, snacks, and swag are all included. We're able to do this thanks to our generous sponsors.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">What's the team size?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Teams can be 1–4 people. You can register solo and find teammates at our team formation event on Friday evening — we'll help make sure no one is left out. Teams can also be a mix of college and high school participants.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Can I participate remotely or virtually?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">HoyaHacks 2027 is an in-person event at Georgetown University. We do not offer a remote participation option this year. If travel is a concern, reach out to us — we may be able to offer limited travel stipends.</div></div>
+    </div>
+  </div>
+
+  <!-- Logistics -->
+  <div class="faq-category">
+    <div class="faq-category-title">Logistics & Travel</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Where is HoyaHacks located on campus?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">The event is held in the McDonough Gymnasium / Armory complex at Georgetown University, 37th and O Street NW, Washington, D.C. Exact room assignments will be sent closer to the event. Check-in opens at the Armory Entrance.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Is there travel reimbursement?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">We offer limited travel reimbursements for participants traveling from outside the DC area. If you need travel assistance, please note it in your registration form. We'll do our best to accommodate as many applicants as possible.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Is there overnight accommodation?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">The hackathon runs overnight from Friday to Sunday, and you're welcome to stay on-site throughout. We provide a dedicated sleep area, but it's minimal — most hackers just work through the night. We don't arrange hotel accommodations, but can share nearby hotel recommendations upon request.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">What should I bring?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <ul>
+          <li>Your laptop and charger</li>
+          <li>Student ID</li>
+          <li>A change of clothes and toiletries if you're staying overnight</li>
+          <li>Sleeping bag or blanket (optional, if you plan to nap)</li>
+          <li>Your best ideas 💡</li>
+        </ul>
+        We provide all meals, snacks, and beverages throughout the event.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Hacking -->
+  <div class="faq-category">
+    <div class="faq-category-title">Hacking & Projects</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Can I start working on my project before the event?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">All hacking must start at the official kickoff at 7:30 PM on Friday Jan 22. You may brainstorm ideas and form teams beforehand, but writing code, designing prototypes, or building any components before the start time is not allowed.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Can I use AI tools and APIs?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes! AI tools, APIs, open-source libraries, and third-party services are all fair game. Just be transparent about what you used in your Devpost submission. The judges are looking for creativity and what you built, not reinventing the wheel from scratch.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">How do I submit my project?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">All projects must be submitted on <a href="https://hoya-hacks-2027.devpost.com/" target="_blank">Devpost</a> by 11:30 AM on Sunday Jan 24. Make sure your submission includes a project description, tech stack, and a demo video or link. Late submissions will not be considered.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Can I work on a project I've started before?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">No — all work submitted must have been created during HoyaHacks 2027. You can build on publicly available open-source projects, but your core hack must be original work from the event weekend. Judges may ask when specific features were built.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Do I need to be a strong coder to participate?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Not at all! We have a dedicated Beginner Track for first-time hackers, and our workshops are designed to get anyone building quickly. Designers, product thinkers, and even non-technical team members are very welcome — great hacks need more than just coders.</div></div>
+    </div>
+  </div>
+
+  <!-- Rules & Conduct -->
+  <div class="faq-category">
+    <div class="faq-category-title">Rules & Code of Conduct</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">What is the Code of Conduct?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">HoyaHacks follows the <a href="http://hackp.ac/coc" target="_blank">MLH Code of Conduct</a>. All participants, mentors, sponsors, and volunteers are expected to uphold a respectful, inclusive environment. Violations will result in immediate removal from the event.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Is HoyaHacks an MLH-affiliated event?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes! HoyaHacks 2027 is an official event in the <a href="https://mlh.io/" target="_blank">Major League Hacking</a> 2027 season. MLH provides additional resources, hardware, and mentors on the day of the event.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">Who owns the intellectual property of my project?<span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">You do! You and your team retain full ownership of anything you build at HoyaHacks. We may ask to feature your project in our social media and promotional materials, but this does not transfer any rights to the organizers or sponsors.</div></div>
+    </div>
+  </div>
+
+  <!-- Still Questions -->
+  <div class="still-questions">
+    <h2>Still Have Questions?</h2>
+    <p>Reach out to us and we'll get back to you as soon as possible. We're happy to help with anything not covered here.</p>
+    <a href="mailto:hoyahaxa@georgetown.edu" class="btn-primary" style="font-size: 1rem; padding: 0.85rem 2rem;">Email Us →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="HH2027_FULL_Logo_Transparent_-_JACK.png" alt="Jack mascot" style="width:48px; opacity:0.7;">
+      <span>HoyaHacks 2027</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/hoyahacks/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/company/hoya-hacks" target="_blank">LinkedIn</a>
+      <a href="https://hoya-hacks-2027.devpost.com/" target="_blank">Devpost</a>
+      <a href="http://hackp.ac/coc" target="_blank">MLH Code of Conduct</a>
+    </div>
+    <div class="footer-contact"><a href="mailto:hoyahaxa@georgetown.edu">hoyahaxa@georgetown.edu</a></div>
+    <div class="footer-copy">© 2027 HoyaHacks · Georgetown University</div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+function toggle(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  // open if wasn't open
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

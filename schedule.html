@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule — HoyaHacks 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.schedule-wrap { max-width: 820px; margin: 0 auto; padding: 0 2rem 5rem; }
+
+.day-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid var(--pink-pale);
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.7rem 1.3rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn.active { color: var(--pink-hot); border-bottom-color: var(--pink-hot); }
+.tab-btn:hover:not(.active) { color: var(--pink-mid); }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.sched-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1.5rem;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--divider);
+  align-items: start;
+}
+
+.sched-item:last-child { border-bottom: none; }
+
+.sched-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  color: var(--pink-hot);
+  letter-spacing: 0.06em;
+  padding-top: 3px;
+}
+
+.sched-event {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.sched-detail {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.sched-tag {
+  display: inline-block;
+  background: var(--pink-pale);
+  color: var(--pink-mid);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.sched-tag.key {
+  background: var(--pink-hot);
+  color: #fff;
+}
+
+.day-intro {
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 14px;
+  padding: 1.4rem 1.8rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.day-intro-icon { font-size: 2rem; }
+
+.day-intro-text h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+}
+
+.day-intro-text p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 540px) {
+  .sched-item { grid-template-columns: 90px 1fr; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="mascot" class="nav-mascot">
+    HoyaHacks
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="schedule.html" class="active">Schedule</a></li>
+    <li><a href="tracks.html">Tracks</a></li>
+    <li><a href="organizers.html">Team</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <a href="index.html#register" class="btn-primary nav-cta">Register</a>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Jan 22–24, 2027</div>
+  <h1>Event <span>Schedule</span></h1>
+  <p>36 hours of hacking, workshops, mentorship, and good food. Here's what to expect across all three days.</p>
+</div>
+
+<div class="schedule-wrap">
+  <div class="day-tabs">
+    <button class="tab-btn active" onclick="switchTab('fri', this)">Friday Jan 22</button>
+    <button class="tab-btn" onclick="switchTab('sat', this)">Saturday Jan 23</button>
+    <button class="tab-btn" onclick="switchTab('sun', this)">Sunday Jan 24</button>
+  </div>
+
+  <!-- FRIDAY -->
+  <div class="tab-panel active" id="tab-fri">
+    <div class="day-intro">
+      <div class="day-intro-icon">🚀</div>
+      <div class="day-intro-text">
+        <h3>Opening Day — Let's Go!</h3>
+        <p>Check in, meet your team, hear from sponsors, and kick off 36 hours of building.</p>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">4:00 PM</div>
+      <div>
+        <div class="sched-event">Check-In Opens</div>
+        <div class="sched-detail">Grab your badge, swag bag, and get settled in</div>
+        <span class="sched-tag">Armory Entrance</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">6:00 PM</div>
+      <div>
+        <div class="sched-event">Opening Ceremony</div>
+        <div class="sched-detail">Welcome from organizers, sponsor introductions, and theme reveal</div>
+        <span class="sched-tag key">Main Stage</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">7:30 PM</div>
+      <div>
+        <div class="sched-event">Hacking Begins 🎉</div>
+        <div class="sched-detail">The 36-hour clock starts — time to build!</div>
+        <span class="sched-tag key">All Tracks</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">8:00 PM</div>
+      <div>
+        <div class="sched-event">Dinner + Networking</div>
+        <div class="sched-detail">Meet sponsors, find teammates, and fuel up</div>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">9:30 PM</div>
+      <div>
+        <div class="sched-event">Team Formation Event</div>
+        <div class="sched-detail">Looking for teammates? Find your perfect match here</div>
+        <span class="sched-tag">Workshop Room A</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">10:30 PM</div>
+      <div>
+        <div class="sched-event">Workshop: Intro to APIs</div>
+        <div class="sched-detail">Hands-on crash course — perfect for beginners</div>
+        <span class="sched-tag">Workshop Room B</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SATURDAY -->
+  <div class="tab-panel" id="tab-sat">
+    <div class="day-intro">
+      <div class="day-intro-icon">💻</div>
+      <div class="day-intro-text">
+        <h3>Full Day of Hacking</h3>
+        <p>Deep work, workshops, and mentor office hours. Stay caffeinated and keep building.</p>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">8:00 AM</div>
+      <div>
+        <div class="sched-event">Breakfast</div>
+        <div class="sched-detail">Fuel up for the long day ahead</div>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">10:00 AM</div>
+      <div>
+        <div class="sched-event">Workshop: ML Crash Course</div>
+        <div class="sched-detail">Build your first machine learning model in 90 minutes</div>
+        <span class="sched-tag">Workshop Room A</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">12:00 PM</div>
+      <div>
+        <div class="sched-event">Galaxy Jars Activity</div>
+        <div class="sched-detail">Take a break and make something fun — seriously</div>
+        <span class="sched-tag">Armory Back Left</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">1:00 PM</div>
+      <div>
+        <div class="sched-event">Lunch + Mentor Office Hours</div>
+        <div class="sched-detail">One-on-one sessions with industry mentors — come with questions!</div>
+        <span class="sched-tag key">Mentor Lounge</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">3:30 PM</div>
+      <div>
+        <div class="sched-event">Workshop: Pitching Your Hack</div>
+        <div class="sched-detail">Learn how to demo effectively in 3 minutes</div>
+        <span class="sched-tag">Workshop Room B</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">7:00 PM</div>
+      <div>
+        <div class="sched-event">Dinner + Mini-Events</div>
+        <div class="sched-detail">Trivia, lightning talks, and late-night snacks</div>
+        <span class="sched-tag">Social</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">11:00 PM</div>
+      <div>
+        <div class="sched-event">Midnight Munchies</div>
+        <div class="sched-detail">Late-night snacks for the night owls still hacking</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUNDAY -->
+  <div class="tab-panel" id="tab-sun">
+    <div class="day-intro">
+      <div class="day-intro-icon">🏆</div>
+      <div class="day-intro-text">
+        <h3>Demo Day — Show Your Work</h3>
+        <p>Polish your project, submit to Devpost, and present to the judges. Time to shine.</p>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">8:00 AM</div>
+      <div>
+        <div class="sched-event">Breakfast</div>
+        <div class="sched-detail">Final morning fuel before the finish line</div>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">11:30 AM</div>
+      <div>
+        <div class="sched-event">Hacking Ends — Submissions Due</div>
+        <div class="sched-detail">Upload to Devpost and finalize your demo</div>
+        <span class="sched-tag key">Hard Deadline</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">12:00 PM</div>
+      <div>
+        <div class="sched-event">Project Expo + Judging</div>
+        <div class="sched-detail">Present your project to judges and sponsors at your table</div>
+        <span class="sched-tag key">Main Hall</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">2:00 PM</div>
+      <div>
+        <div class="sched-event">Finalist Presentations</div>
+        <div class="sched-detail">Top teams present to the full audience and judging panel</div>
+        <span class="sched-tag key">Main Stage</span>
+      </div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-time">3:00 PM</div>
+      <div>
+        <div class="sched-event">Closing Ceremony + Awards</div>
+        <div class="sched-detail">Winners announced, prizes awarded, group photo, and goodbyes</div>
+        <span class="sched-tag key">Main Stage</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="Jack mascot" style="width:48px; opacity:0.7;">
+      <span>HoyaHacks 2027</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/hoyahacks/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/company/hoya-hacks" target="_blank">LinkedIn</a>
+      <a href="https://hoya-hacks-2027.devpost.com/" target="_blank">Devpost</a>
+      <a href="http://hackp.ac/coc" target="_blank">MLH Code of Conduct</a>
+    </div>
+    <div class="footer-contact"><a href="mailto:hoyahaxa@georgetown.edu">hoyahaxa@georgetown.edu</a></div>
+    <div class="footer-copy">© 2027 HoyaHacks · Georgetown University</div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+function switchTab(day, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + day).classList.add('active');
+}
+</script>
+</body>
+</html>

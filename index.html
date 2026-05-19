@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HoyaHacks 2027 — Georgetown University</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(232,38,122,0.07) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(196,30,106,0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-logo {
+  width: min(480px, 82vw);
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.hero-date {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--pink-hot);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.hero-location {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2.2rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.25s ease both;
+  margin-bottom: 3rem;
+}
+
+.countdown-strip {
+  display: flex;
+  gap: 0;
+  animation: fadeUp 0.7s 0.35s ease both;
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(232,38,122,0.08);
+}
+
+.count-block {
+  padding: 1.2rem 1.8rem;
+  text-align: center;
+  border-right: 1px solid var(--pink-pale);
+}
+
+.count-block:last-child { border-right: none; }
+
+.count-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: var(--pink-hot);
+  line-height: 1;
+  display: block;
+}
+
+.count-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── ABOUT STRIP ── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 4rem auto;
+  max-width: 860px;
+  background: #fff;
+}
+
+.stat-item {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-right: 1px solid var(--pink-pale);
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--pink-hot);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ── ABOUT SECTION ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text .section-label { margin-bottom: 0.5rem; }
+
+.about-text p {
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 0.9rem;
+  font-size: 1.02rem;
+}
+
+.about-text p strong { color: var(--pink-deep); font-weight: 700; }
+
+.about-mascot-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about-mascot {
+  width: 280px;
+  animation: float 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 12px 30px rgba(232,38,122,0.15));
+}
+
+/* ── REGISTRATION CARDS ── */
+.reg-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  max-width: 680px;
+  margin: 2.5rem auto 0;
+}
+
+.reg-card {
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.reg-card:hover {
+  border-color: var(--pink-hot);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(232,38,122,0.1);
+}
+
+.reg-icon {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.reg-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.reg-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* ── SPONSOR SECTION ── */
+.sponsor-tier { margin-bottom: 2.5rem; }
+
+.sponsor-tier-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sponsor-tier-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--pink-pale);
+}
+
+.sponsor-tier-label.gold { color: #B8891A; }
+.sponsor-tier-label.platinum { color: var(--pink-mid); }
+
+.sponsor-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.sponsor-pill {
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  transition: border-color 0.2s;
+}
+
+.sponsor-pill:hover { border-color: var(--pink-hot); }
+.sponsor-pill.lg { min-width: 200px; min-height: 70px; font-size: 1rem; }
+.sponsor-pill.md { min-width: 150px; min-height: 58px; }
+.sponsor-pill.sm { min-width: 110px; min-height: 48px; font-size: 0.75rem; }
+
+/* ── SPONSOR CTA ── */
+.sponsor-cta-box {
+  background: linear-gradient(135deg, var(--pink-pale) 0%, #fff 100%);
+  border: 1.5px solid var(--pink-light);
+  border-radius: 16px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.sponsor-cta-box h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.03em;
+}
+
+.sponsor-cta-box p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+/* ── QUICK LINKS ── */
+.page-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.page-link-card {
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 14px;
+  padding: 1.8rem 1.5rem;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.page-link-card:hover {
+  border-color: var(--pink-hot);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(232,38,122,0.1);
+}
+
+.page-link-icon {
+  font-size: 1.8rem;
+  display: block;
+}
+
+.page-link-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+}
+
+.page-link-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.page-link-arrow {
+  font-size: 1rem;
+  color: var(--pink-hot);
+  margin-top: auto;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .stat-strip { grid-template-columns: 1fr 1fr; }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(1), .stat-item:nth-child(2) { border-bottom: 1px solid var(--pink-pale); }
+  .reg-cards { grid-template-columns: 1fr; }
+  .countdown-strip { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="HoyaHacks mascot" class="nav-mascot">
+    HoyaHacks
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="tracks.html">Tracks</a></li>
+    <li><a href="organizers.html">Team</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <a href="#register" class="btn-primary nav-cta">Register</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <img src="HH2027_FULL_Logo_Transparent-JACK_AND_LOGO.png" alt="HoyaHacks 2027" class="hero-logo">
+  <p class="hero-sub">Georgetown University's Annual Hackathon</p>
+  <div class="hero-date">January 22–24, 2027</div>
+  <p class="hero-location">Georgetown University · Washington, D.C.</p>
+  <div class="hero-btns">
+    <a href="#register" class="btn-primary" style="font-size:1.05rem; padding: 0.85rem 2.2rem;">Register Now</a>
+    <a href="schedule.html" class="btn-outline" style="font-size:1.05rem; padding: 0.85rem 2.2rem;">See Schedule</a>
+  </div>
+  <div class="countdown-strip">
+    <div class="count-block"><span class="count-num" id="cd-days">--</span><div class="count-label">Days</div></div>
+    <div class="count-block"><span class="count-num" id="cd-hrs">--</span><div class="count-label">Hours</div></div>
+    <div class="count-block"><span class="count-num" id="cd-min">--</span><div class="count-label">Minutes</div></div>
+    <div class="count-block"><span class="count-num" id="cd-sec">--</span><div class="count-label">Seconds</div></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section style="padding: 0 2rem;">
+  <div class="stat-strip">
+    <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Hackers</div></div>
+    <div class="stat-item"><div class="stat-num">36</div><div class="stat-label">Hours</div></div>
+    <div class="stat-item"><div class="stat-num">$20K+</div><div class="stat-label">Prizes</div></div>
+    <div class="stat-item"><div class="stat-num">All</div><div class="stat-label">Skill Levels</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page-section">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-label">What is HoyaHacks?</div>
+      <h2 class="section-title">36 Hours to Build Something Brilliant</h2>
+      <p>HoyaHacks is Georgetown University's premier annual hackathon — a <strong>36-hour sprint</strong> where students from across the country come together to learn, build, and ship projects that matter.</p>
+      <p>Whether you're a seasoned engineer or writing your very first line of code, HoyaHacks is your stage. We welcome <strong>all skill levels</strong>, all backgrounds, and every wild idea you walk through the door with.</p>
+      <p>Expect workshops, mentorship from industry leaders, free food, swag, and a whole lot of energy on the Hilltop.</p>
+    </div>
+    <div class="about-mascot-wrap">
+      <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="Jack the HoyaHacks mascot" class="about-mascot">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPLORE PAGES -->
+<section class="page-section">
+  <div class="section-label">Explore</div>
+  <h2 class="section-title">Everything You Need to Know</h2>
+  <div class="page-links-grid">
+    <a href="schedule.html" class="page-link-card">
+      <span class="page-link-icon">🗓️</span>
+      <h3>Schedule</h3>
+      <p>Full event timeline across all three days — Jan 22 to 24.</p>
+      <div class="page-link-arrow">View Schedule →</div>
+    </a>
+    <a href="tracks.html" class="page-link-card">
+      <span class="page-link-icon">🏁</span>
+      <h3>Tracks</h3>
+      <p>Browse the challenge tracks and find your focus area.</p>
+      <div class="page-link-arrow">See Tracks →</div>
+    </a>
+    <a href="organizers.html" class="page-link-card">
+      <span class="page-link-icon">👥</span>
+      <h3>Meet the Team</h3>
+      <p>The organizers working hard behind the scenes.</p>
+      <div class="page-link-arrow">Meet Us →</div>
+    </a>
+    <a href="faq.html" class="page-link-card">
+      <span class="page-link-icon">💬</span>
+      <h3>FAQ</h3>
+      <p>Got questions? We've got answers to the most common ones.</p>
+      <div class="page-link-arrow">Read FAQ →</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REGISTER -->
+<section class="page-section" id="register">
+  <div style="text-align:center; max-width: 560px; margin: 0 auto;">
+    <div class="section-label">Join Us</div>
+    <h2 class="section-title">Registration Is Open!</h2>
+    <p style="color: var(--text-muted); line-height:1.8; margin-bottom: 0.5rem;">Spots are limited — register early to guarantee your place at Georgetown's biggest hackathon of the year.</p>
+  </div>
+  <div class="reg-cards">
+    <div class="reg-card">
+      <span class="reg-icon">🎓</span>
+      <h3>College Hackers</h3>
+      <p>Enrolled in a college or university? Apply here for your spot.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNXc4PDaqqSCyUtw2IgmQHfqJkP1dzmEIS2IK9UFl7gqd8GQ/viewform?usp=header" target="_blank" class="btn-primary" style="display:inline-block;">Apply Now →</a>
+    </div>
+    <div class="reg-card">
+      <span class="reg-icon">🏫</span>
+      <h3>High School Hackers</h3>
+      <p>Still in high school? You're welcome too — register here.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfllguxNM3P-kQ0oTwqUsLUhwHa4JsBpQFclFmaBj_dWIoA5Q/viewform?usp=header" target="_blank" class="btn-primary" style="display:inline-block;">Apply Now →</a>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top: 1.8rem;">
+    <a href="https://hoya-hacks-2027.devpost.com/" target="_blank" class="btn-outline">View on DevPost</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SPONSORS -->
+<section class="page-section">
+  <div class="section-label">Thank You</div>
+  <h2 class="section-title">Our 2026 Sponsors</h2>
+
+  <div class="sponsor-tier">
+    <div class="sponsor-tier-label platinum">Title Sponsor</div>
+    <div class="sponsor-row">
+      <div class="sponsor-pill lg">Cisco</div>
+    </div>
+  </div>
+
+  <div class="sponsor-tier">
+    <div class="sponsor-tier-label platinum">Platinum</div>
+    <div class="sponsor-row">
+      <div class="sponsor-pill lg">Platinum Sponsor</div>
+    </div>
+  </div>
+
+  <div class="sponsor-tier">
+    <div class="sponsor-tier-label gold">Gold</div>
+    <div class="sponsor-row">
+      <div class="sponsor-pill md">ImmHistory</div>
+      <div class="sponsor-pill md">Staples</div>
+    </div>
+  </div>
+
+  <div class="sponsor-tier">
+    <div class="sponsor-tier-label">General Sponsors</div>
+    <div class="sponsor-row">
+      <div class="sponsor-pill sm">GU Sustainability</div>
+      <div class="sponsor-pill sm">UIS</div>
+      <div class="sponsor-pill sm">USAII</div>
+      <div class="sponsor-pill sm">CNP</div>
+      <div class="sponsor-pill sm">CA Technologies</div>
+    </div>
+  </div>
+
+  <div class="sponsor-cta-box">
+    <div>
+      <h3>Sponsor HoyaHacks 2027</h3>
+      <p>Reach 500+ talented hackers from top universities across the country.</p>
+    </div>
+    <div style="display:flex; gap: 0.8rem; flex-wrap:wrap;">
+      <a href="https://hoyahacks.georgetown.domains/wp-content/uploads/2026/01/2026-Sponsor-Packet.pdf" target="_blank" class="btn-outline">View Prospectus</a>
+      <a href="https://hoyahacks.georgetown.domains/wp-content/uploads/2022/06/HOYA-HACKS-SPONSOR-INSTRUCTIONS.pdf" target="_blank" class="btn-primary">Become a Sponsor</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="Jack mascot" style="width:48px; opacity:0.7;">
+      <span>HoyaHacks 2027</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/hoyahacks/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/company/hoya-hacks" target="_blank">LinkedIn</a>
+      <a href="https://hoya-hacks-2027.devpost.com/" target="_blank">Devpost</a>
+      <a href="http://hackp.ac/coc" target="_blank">MLH Code of Conduct</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:hoyahaxa@georgetown.edu">hoyahaxa@georgetown.edu</a>
+    </div>
+    <div class="footer-copy">© 2027 HoyaHacks · Georgetown University</div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// Countdown
+(function() {
+  const target = new Date('2027-01-22T08:00:00-05:00');
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function update() {
+    const diff = target - new Date();
+    if (diff <= 0) {
+      ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    document.getElementById('cd-days').textContent = pad(Math.floor(diff/86400000));
+    document.getElementById('cd-hrs').textContent  = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-min').textContent  = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-sec').textContent  = pad(Math.floor((diff%60000)/1000));
+  }
+  update(); setInterval(update, 1000);
+})();
+</script>
+</body>
+</html>
