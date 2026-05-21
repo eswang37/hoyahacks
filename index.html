@@ -26,6 +26,7 @@
   background-image:
     radial-gradient(circle at 20% 30%, rgba(232,38,122,0.07) 0%, transparent 45%),
     radial-gradient(circle at 80% 70%, rgba(196,30,106,0.05) 0%, transparent 40%);
+    /*linear-gradient(135deg, var(--pink-pale) 0%, var(--pink-light) 100%)*/
   pointer-events: none;
 }
 
@@ -74,13 +75,13 @@
 
 .countdown-strip {
   display: flex;
-  gap: 0;
+  /*gap: 0;*/
   animation: fadeUp 0.7s 0.35s ease both;
-  background: #fff;
-  border: 1.5px solid var(--pink-pale);
+  /*background: #fff;*/
+  /* border: 1.5px solid var(--pink-pale); */
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(232,38,122,0.08);
+  /*box-shadow: 0 2px 16px rgba(232,38,122,0.08);*/
 }
 
 .count-block {
@@ -399,8 +400,11 @@
   </div>
 </div>
 
-<!-- STATS -->
-<section style="padding: 0 2rem;">
+<div class="megadivider"></div>
+
+
+<!-- STATS 
+<section style=" padding-top: 3rem;">
   <div class="stat-strip">
     <div class="stat-item"><div class="stat-num">300+</div><div class="stat-label">Hackers</div></div>
     <div class="stat-item"><div class="stat-num">36</div><div class="stat-label">Hours</div></div>
@@ -408,6 +412,7 @@
     <div class="stat-item"><div class="stat-num">All</div><div class="stat-label">Skill Levels</div></div>
   </div>
 </section>
+-->
 
 <!-- ABOUT -->
 <section class="page-section">
@@ -415,9 +420,9 @@
     <div class="about-text">
       <div class="section-label">What is HoyaHacks?</div>
       <h2 class="section-title">36 Hours to Build Something Brilliant</h2>
-      <p>HoyaHacks is Georgetown University's premier annual hackathon — a <strong>36-hour sprint</strong> where students from across the country come together to learn, build, and ship projects that matter.</p>
+      <p>HoyaHacks is Georgetown University's premier annual hackathon — a <strong>36-hour sprint</strong> where <strong>300+</strong> students from across the country come together to learn, build, and ship projects that matter.</p>
       <p>Whether you're a seasoned engineer or writing your very first line of code, HoyaHacks is your stage. We welcome <strong>all skill levels</strong>, all backgrounds, and every wild idea you walk through the door with.</p>
-      <p>Expect workshops, mentorship from industry leaders, free food, swag, and a whole lot of energy on the Hilltop.</p>
+      <p>Expect free food, swag, <strong>$20K+ worth of prizes</strong>, and a whole lot of energy on the Hilltop.</p>
     </div>
     <div class="about-mascot-wrap">
       <img src="HH2027_FULL_Logo_Transparent-JACK.png" alt="Jack the HoyaHacks mascot" class="about-mascot">
@@ -459,7 +464,7 @@
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider"></div>-
 
 <!-- REGISTER -->
 <section class="page-section" id="register">

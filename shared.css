@@ -21,6 +21,7 @@
   --text:       #1A0A10;
   --text-muted: #8A5E70;
   --divider:    #F0D5E2;
+  --megadivider: #F0D5E2;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -161,6 +162,13 @@ body {
   margin: 0 auto;
   height: 1px;
   background: var(--divider);
+}
+
+.megadivider {
+  max-width: 2000px;
+  margin: 0 auto;
+  height: 1px;
+  background: var(--megadivider);
 }
 
 /* ── PAGE HERO (inner pages) ── */
